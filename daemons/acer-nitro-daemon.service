@@ -1,0 +1,14 @@
+[Unit]
+Description=Acer Nitro — Turbo + Predator Key
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/acer-nitro-daemon
+Restart=on-failure
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

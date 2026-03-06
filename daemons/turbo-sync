@@ -1,0 +1,15 @@
+#!/bin/bash
+# /usr/local/bin/turbo-sync
+# Chamado pelo udev quando platform-profile muda — sem loop, sem daemon
+
+PROFILE="/sys/firmware/acpi/platform_profile"
+LED="/sys/module/linuwu_sense/drivers/platform:acer-wmi/acer-wmi/nitro_sense/turbo_led"
+
+sleep 0.2
+current=$(cat "$PROFILE")
+
+if [[ "$current" == "performance" ]]; then
+    echo 1 > "$LED"
+else
+    echo 0 > "$LED"
+fi
