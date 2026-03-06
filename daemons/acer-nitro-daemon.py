@@ -6,7 +6,7 @@ import subprocess, threading, time, os, glob, json, pwd
 PROFILE = "/sys/firmware/acpi/platform_profile"
 LED     = "/sys/module/linuwu_sense/drivers/platform:acer-wmi/acer-wmi/nitro_sense/turbo_led"
 DAMX    = "/opt/damx/gui/DivAcerManagerMax"
-USER    = "mpotiki"
+USER    = pwd.getpwuid(1000).pw_name
 
 def user_env():
     uid = subprocess.check_output(["id", "-u", USER], text=True).strip()
